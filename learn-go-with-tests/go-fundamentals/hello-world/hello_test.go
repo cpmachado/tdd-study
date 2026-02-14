@@ -4,10 +4,11 @@ import "testing"
 
 func TestHello(t *testing.T) {
 	// given
-	want := "hello, world"
+	name := "cpmachado"
+	want := "hello, " + name
 
 	// when
-	got := Hello()
+	got := Hello(name)
 
 	// then
 	if got != want {
