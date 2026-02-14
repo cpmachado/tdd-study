@@ -5,18 +5,22 @@ import "testing"
 func TestRepeat(t *testing.T) {
 	// given
 	character := "a"
+	n := 5
 	expected := "aaaaa"
 
 	// when
-	repeated := Repeat(character)
+	repeated := Repeat(character, n)
 
 	// then
 	assertCorrectRepeat(t, repeated, expected)
 }
 
 func BenchmarkRepeat(b *testing.B) {
+	character := "a"
+	n := 5
+
 	for b.Loop() {
-		Repeat("a")
+		Repeat(character, n)
 	}
 }
 
