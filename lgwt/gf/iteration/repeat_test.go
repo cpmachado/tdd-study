@@ -2,17 +2,18 @@ package iteration
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 )
 
 func TestRepeat(t *testing.T) {
 	// given
 	character := "a"
-	n := 5
+	count := 5
 	expected := "aaaaa"
 
 	// when
-	repeated := Repeat(character, n)
+	repeated := Repeat(character, count)
 
 	// then
 	assertCorrectRepeat(t, repeated, expected)
@@ -20,17 +21,27 @@ func TestRepeat(t *testing.T) {
 
 func BenchmarkRepeat(b *testing.B) {
 	character := "a"
-	n := 5
+	count := 5
 
 	for b.Loop() {
-		Repeat(character, n)
+		Repeat(character, count)
+	}
+}
+
+// [strings.Repeat] is identic to our function and runs in similar time
+func BenchmarkStringsRepeat(b *testing.B) {
+	character := "a"
+	count := 5
+
+	for b.Loop() {
+		strings.Repeat(character, count)
 	}
 }
 
 func ExampleRepeat() {
 	character := "a"
-	n := 5
-	fmt.Println(Repeat(character, n))
+	count := 5
+	fmt.Println(Repeat(character, count))
 
 	// Output: aaaaa
 }
