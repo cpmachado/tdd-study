@@ -14,6 +14,12 @@ func TestRepeat(t *testing.T) {
 	assertCorrectRepeat(t, repeated, expected)
 }
 
+func BenchmarkRepeat(b *testing.B) {
+	for b.Loop() {
+		Repeat("a")
+	}
+}
+
 func assertCorrectRepeat(t testing.TB, repeated, expected string) {
 	t.Helper()
 	if expected != repeated {
